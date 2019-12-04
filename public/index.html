@@ -26,15 +26,26 @@
             var game = new Phaser.Game(config);
 
             function preload() {
-                this.load.setBaseURL("http://labs.phaser.io");
+                // this.load.setBaseURL("http://labs.phaser.io");
 
-                this.load.image("sky", "assets/skies/space3.png");
-                this.load.image("logo", "assets/sprites/phaser3-logo.png");
-                this.load.image("red", "assets/particles/red.png");
+                this.load.image(
+                    "sky",
+                    "http://labs.phaser.io/assets/skies/space3.png"
+                );
+                this.load.image(
+                    "logo",
+                    "http://labs.phaser.io/assets/sprites/phaser3-logo.png"
+                );
+                this.load.image(
+                    "red",
+                    "http://labs.phaser.io/assets/particles/red.png"
+                );
+
+                this.load.image("yamero", "./images/yamero.jpg");
             }
 
             function create() {
-                this.add.image(400, 300, "sky");
+                this.add.image(400, 300, "yamero");
 
                 var particles = this.add.particles("red");
 
