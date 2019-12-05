@@ -72,6 +72,8 @@
                     super("PlayGame");
                 }
                 preload() {
+                    // this.load.audio("greens", "./public/assets/greens.mp3");
+
                     this.load.image("platform", "./public/assets/yamero.jpg");
                     this.load.image("player", "./public/assets/player.png");
 
@@ -88,6 +90,12 @@
                 }
 
                 create() {
+                    this.load.audio("greens", ["./public/assets/greens.mp3"]);
+                    this.load.start();
+
+                    // let sfx = this.sound.add("greens");
+                    // sfx.play();
+
                     // group with all active platforms.
                     this.platformGroup = this.add.group({
                         // once a platform is removed, it's added to the pool
@@ -200,7 +208,13 @@
                         this.player.anims.stop();
                     }
                 }
+
                 update() {
+                    if (!this.playing && !this.load.isLoading()) {
+                        this.playing = true;
+                        this.sound.play("greens");
+                    }
+
                     // game over
                     if (this.player.y > game.config.height) {
                         this.scene.start("PlayGame");
