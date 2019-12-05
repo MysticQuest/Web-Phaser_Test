@@ -212,7 +212,7 @@
                 update() {
                     if (!this.playing && !this.load.isLoading()) {
                         this.playing = true;
-                        this.sound.play("greens");
+                        this.sound.play("greens", { volume: 0.5, loop: true });
                     }
 
                     // game over
