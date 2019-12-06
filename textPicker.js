@@ -1,3 +1,4 @@
+/* eslint-disable es5/no-block-scoping */
 /* eslint-disable array-bracket-spacing */
 /* eslint-disable es5/no-arrow-functions */
 /* eslint-disable quotes */
@@ -15,13 +16,13 @@
 
 
 function pickLine() {
-    var greetArray = ["Hello, ", "Greetings, ", "Hey dawg, ", "Sup man, "];
-    var firstArray = ["my cat ", "my uncle ", "my neighbour "];
-    var secondArray = ["is pressing charges against me", "died today", "stole my car"];
-    var greet = greetArray[Math.floor(Math.random() * greetArray.length)];
-    var first = firstArray[Math.floor(Math.random() * firstArray.length)];
-    var second = secondArray[Math.floor(Math.random() * secondArray.length)];
-    var string = greet + first + second;
+    const greetArray = ["Hello, ", "Greetings, ", "Hey dawg, ", "Sup man, ", "I've been waiting in queue for hours and ", "Help me, "];
+    const firstArray = ["my cat ", "my uncle ", "the neighbour ", "my ex-wife ", "my dog ", "my lawyer ", "a kid "];
+    const secondArray = ["is pressing charges against me.", "died today...", "stole my car!", "has been deported!", "is talking shit about me!"];
+    const greet = greetArray[Math.floor(Math.random() * greetArray.length)];
+    const first = firstArray[Math.floor(Math.random() * firstArray.length)];
+    const second = secondArray[Math.floor(Math.random() * secondArray.length)];
+    const string = greet + first + second;
     return string;
 }
 
