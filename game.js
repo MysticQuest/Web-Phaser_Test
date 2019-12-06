@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable array-bracket-spacing */
 /* eslint-disable quotes */
 /* eslint-disable brace-style */
 /* eslint-disable space-before-function-paren */
@@ -5,6 +7,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable indent */
 // The game config that is used by Phaser
+
 
 
 var config = {
@@ -21,11 +24,15 @@ var config = {
 // Create a new Phaser Game object
 var game = new Phaser.Game(config);
 
-function preload() { this.load.plugin('DialogModalPlugin', './dialog.js'); this.load.image("bg", "./public/assets/bg.jpg"); }
+function preload() {
+  this.load.plugin('DialogModalPlugin', './dialog.js');
+  this.load.image("bg", "./public/assets/bg.jpg");
+}
 
 function create() {
   this.add.image(700, 300, "bg");
   this.sys.install('DialogModalPlugin');
   this.sys.dialogModal.init();
-  this.sys.dialogModal.setText('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', true);
+  this.sys.dialogModal.setText(pickLine(), true);
 }
+
