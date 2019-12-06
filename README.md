@@ -1,26 +1,11 @@
-# Phaser - HTML5 Game Framework
+# Public Sector Simulator
 
-![Phaser Header](https://phaser.io/images/github/300/phaser-header.png "Phaser 3 Header Banner")
+![Phaser Header](https://cdn.discordapp.com/attachments/417838029429014549/652189754762461184/pixil-frame-0.png "PSS Header Banner")
 
-Phaser is a fast, free, and fun open source HTML5 game framework that offers WebGL and Canvas rendering across desktop and mobile web browsers. Games can be compiled to iOS, Android and native apps by using 3rd party tools. You can use JavaScript or TypeScript for development.
+Public Sector Simulator is a humoristic game about choices..
 
-Along with the fantastic open source community, Phaser is actively developed and maintained by [Photon Storm](http://www.photonstorm.com). As a result of rapid support, and a developer friendly API, Phaser is currently one of the [most starred](https://github.com/collections/javascript-game-engines) game frameworks on GitHub.
 
-Thousands of developers from indie and multi-national digital agencies, and universities worldwide use Phaser. You can take a look at their incredible [games](https://phaser.io/games/).
 
-**Visit:** The [Phaser website](https://phaser.io) and follow on [Twitter](https://twitter.com/phaser_) (#phaserjs)<br />
-**Learn:** [API Docs](https://photonstorm.github.io/phaser3-docs/index.html), [Support Forum][forum] and [StackOverflow](https://stackoverflow.com/questions/tagged/phaser-framework)<br />
-**Code:** 1700+ [Examples](https://phaser.io/examples) (source available in this [repo][examples])<br />
-**Read:** The [Phaser World](#newsletter) Newsletter<br />
-**Chat:** [Slack](https://phaser.io/community/slack) and [Discord](https://phaser.io/community/discord)<br />
-**Extend:** With [Phaser Plugins](https://phaser.io/shop/plugins)<br />
-**Be awesome:** [Support](#support) the future of Phaser<br />
-
-Grab the source and join the fun!
-
-![What's New](https://phaser.io/images/github/div-whats-new.png "What's New")
-
-<div align="center"><img src="https://phaser.io/images/github/news.jpg"></div>
 
 > 22nd November 2019
 
