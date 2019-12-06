@@ -26,7 +26,7 @@ var game = new Phaser.Game(config);
 
 function preload() {
   this.load.plugin('DialogModalPlugin', './dialog.js');
-  this.load.image("bg", "./public/assets/bg.jpg");
+  this.load.image("bg", "./assets/bk.png");
 }
 
 function create() {
