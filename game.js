@@ -33,9 +33,23 @@ function preload() {
 
 function create() {
   this.add.image(700, 300, "bg");
-  this.add.image(700, 300, "char");
+  this.add.image(300, 300, "char");
   this.sys.install('DialogModalPlugin');
   this.sys.dialogModal.init();
   this.sys.dialogModal.setText(pickLine(), true);
-}
+  this.input.mouse.disableContextMenu();
 
+  // this part is firing a new  text everytime u press one of the two buttons on ur mouse
+  this.input.on('pointerdown',function(pointer) {
+      if (pointer.rightButtonDown()) {
+        this.sys.dialogModal.setText(pickLine(),true);
+      } else {
+        
+        this.sys.dialogModal.setText(pickLine(),true);
+      }
+
+  },this);
+}
+function update() {
+var pointer = this.input.activePointer();
+}
