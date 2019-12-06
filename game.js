@@ -26,11 +26,14 @@ var game = new Phaser.Game(config);
 
 function preload() {
   this.load.plugin('DialogModalPlugin', './dialog.js');
-  this.load.image("bg", "./assets/bk.png");
+  this.load.image("bg", "./assets/eforia.png");
+  this.load.image("char", "./assets/bk.png");
+
 }
 
 function create() {
   this.add.image(700, 300, "bg");
+  this.add.image(700, 300, "char");
   this.sys.install('DialogModalPlugin');
   this.sys.dialogModal.init();
   this.sys.dialogModal.setText(pickLine(), true);
