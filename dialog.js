@@ -34,7 +34,10 @@ DialogModalPlugin.prototype = {
 
     //  Called when a Scene shuts down, it may then come back again later
     // (which will invoke the 'start' event) but should be considered dormant.
-    shutdown: function () { },
+    shutdown: function () {
+        if (this.timedEvent) this.timedEvent.remove();
+        if (this.text) this.text.destroy();
+    },
 
     // called when a Scene is destroyed by the Scene Manager
     destroy: function () {
@@ -108,6 +111,67 @@ DialogModalPlugin.prototype = {
 
         this._createCloseModalButton();
         this._createCloseModalButtonBorder();
+
+    },
+
+    // Hide/Show the dialog window
+    toggleWindow: function () {
+        this.visible = !this.visible;
+        if (this.text) this.text.visible = this.visible;
+        if (this.graphics) this.graphics.visible = this.visible;
+        if (this.closeBtn) this.closeBtn.visible = this.visible;
+    },
+
+    // Sets the text for the dialog window
+    // setText: function (text) {
+    //     this._setText(text);
+    // },
+
+    // Calcuate the position of the text in the dialog window
+    _setText: function (text) {
+        // Reset the dialog
+        if (this.text) this.text.destroy();
+
+        var x = this.padding + 10;
+        var y = this._getGameHeight() - this.windowHeight - this.padding + 10;
+
+        this.text = this.scene.make.text({
+            x,
+            y,
+            text,
+            style: {
+                wordWrap: { width: this._getGameWidth() - (this.padding * 2) - 25 }
+            }
+        });
+    },
+
+    // Sets the text for the dialog window
+    setText: function (text, animate) {
+        // Reset the dialog
+        this.eventCounter = 0;
+        this.dialog = text.split('');
+        if (this.timedEvent) this.timedEvent.remove();
+
+        var tempText = animate ? '' : text;
+        this._setText(tempText);
+
+        if (animate) {
+            this.timedEvent = this.scene.time.addEvent({
+                delay: 150 - (this.dialogSpeed * 30),
+                callback: this._animateText,
+                callbackScope: this,
+                loop: true
+            });
+        }
+    },
+
+    // Slowly displays the text in the window to make it appear annimated
+    _animateText: function () {
+        this.eventCounter++;
+        this.text.setText(this.text.text + this.dialog[this.eventCounter - 1]);
+        if (this.eventCounter === this.dialog.length) {
+            this.timedEvent.remove();
+        }
     },
 
     // Creates the inner dialog window(where the text is displayed)
@@ -145,6 +209,9 @@ DialogModalPlugin.prototype = {
         this.closeBtn.on('pointerdown', function () {
             self.toggleWindow();
         });
+
+        if (self.timedEvent) self.timedEvent.remove();
+        if (self.text) self.text.destroy();
     },
 
     // Creates the close dialog button border

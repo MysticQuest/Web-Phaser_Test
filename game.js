@@ -27,5 +27,5 @@ function create() {
   this.add.image(700, 300, "bg");
   this.sys.install('DialogModalPlugin');
   this.sys.dialogModal.init();
-
+  this.sys.dialogModal.setText('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', true);
 }
