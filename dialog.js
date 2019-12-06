@@ -1,3 +1,4 @@
+/* eslint-disable consistent-this */
 /* eslint-disable comma-dangle */
 /* eslint-disable es5/no-shorthand-properties */
 /* eslint-disable curly */
@@ -104,6 +105,9 @@ DialogModalPlugin.prototype = {
 
         this._createOuterWindow(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);
         this._createInnerWindow(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);
+
+        this._createCloseModalButton();
+        this._createCloseModalButtonBorder();
     },
 
     // Creates the inner dialog window(where the text is displayed)
@@ -117,4 +121,36 @@ DialogModalPlugin.prototype = {
         this.graphics.lineStyle(this.borderThickness, this.borderColor, this.borderAlpha);
         this.graphics.strokeRect(x, y, rectWidth, rectHeight);
     },
+
+    // Creates the close dialog window button
+    _createCloseModalButton: function () {
+        var self = this;
+        this.closeBtn = this.scene.make.text({
+            x: this._getGameWidth() - this.padding - 14,
+            y: this._getGameHeight() - this.windowHeight - this.padding + 3,
+            text: 'X',
+            style: {
+                font: 'bold 12px Arial',
+                fill: this.closeBtnColor
+            }
+        });
+        this.closeBtn.setInteractive();
+
+        this.closeBtn.on('pointerover', function () {
+            this.setTint(0xff0000);
+        });
+        this.closeBtn.on('pointerout', function () {
+            this.clearTint();
+        });
+        this.closeBtn.on('pointerdown', function () {
+            self.toggleWindow();
+        });
+    },
+
+    // Creates the close dialog button border
+    _createCloseModalButtonBorder: function () {
+        var x = this._getGameWidth() - this.padding - 20;
+        var y = this._getGameHeight() - this.windowHeight - this.padding;
+        this.graphics.strokeRect(x, y, 20, 20);
+    }
 };
