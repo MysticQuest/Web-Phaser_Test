@@ -1,3 +1,11 @@
+/* eslint-disable es5/no-block-scoping */
+/* eslint-disable no-multi-spaces */
+/* eslint-disable space-infix-ops */
+/* eslint-disable curly */
+/* eslint-disable no-lonely-if */
+/* eslint-disable no-invalid-this */
+/* eslint-disable comma-dangle */
+/* eslint-disable lines-around-comment */
 /* eslint-disable no-undef */
 /* eslint-disable array-bracket-spacing */
 /* eslint-disable quotes */
@@ -7,7 +15,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable indent */
 // The game config that is used by Phaser
-
 
 
 var config = {
@@ -25,10 +32,10 @@ var config = {
 var game = new Phaser.Game(config);
 
 function preload() {
-  this.load.plugin('DialogModalPlugin', './dialog.js');
+  this.load.plugin('DialogModalPlugin', './myPlugins/dialog.js');
   this.load.image("bg", "./assets/eforia.png");
   this.load.image("char", "./assets/bk.png");
-  this.load.audio("bg_audio","./assets/backgroundAudio.mp3");
+  this.load.audio("bg_audio", "./assets/backgroundAudio.mp3");
 
 }
 
@@ -37,32 +44,55 @@ function create() {
   this.add.image(300, 300, "char");
   this.bgAudio = this.sound.add("bg_audio");
   var musicConfig = {
-    mute: false ,
-    volume: 0.7 ,
-    rate: 1 ,
+    mute: false,
+    volume: 0.7,
+    rate: 1,
     detune: 0,
     seek: 0,
     loop: true,
     delay: 0
-
   };
+
   this.bgAudio.play(musicConfig);
-  this.sys.install('DialogModalPlugin');
+  this.sys.install('DialogModalPlugin');  // old plugin
   this.sys.dialogModal.init();
   this.sys.dialogModal.setText(pickLine(), true);
   this.input.mouse.disableContextMenu();
 
-  // this part is firing a new  text everytime u press one of the two buttons on ur mouse
-  this.input.on('pointerdown',function(pointer) {
-      if (pointer.rightButtonDown()) {
-        this.sys.dialogModal.setText(pickLine(),true);
-      } else {
-        
-        this.sys.dialogModal.setText(pickLine(),true);
-      }
 
-  },this);
+  // Adds text in the scene
+  choiceA = this.add.text(100, 480, "- Have you tried turning it on and off?", { font: '16px Arial', fill: '#fff' });
+  choiceB = this.add.text(100, 510, "- Not my problem ", { font: '16px Arial', fill: '#fff' });
+  choiceC = this.add.text(100, 540, "- Next please...", { font: '16px Arial', fill: '#fff' });
+
+  // Enables input events with functions
+  choiceA.setInteractive();
+  choiceB.setInteractive();
+  choiceC.setInteractive();
+
+  choiceA.on("pointerdown", function (event) {
+    this.sys.dialogModal.setText(pickReply(), true);
+  }, this);
+
+  choiceB.on("pointerdown", function (event) {
+    this.sys.dialogModal.setText(pickReply(), true);
+  }, this);
+
+  choiceC.on("pointerdown", function (event) {
+    this.sys.dialogModal.setText(pickLine(), true);
+  }, this);
+
+
+
+  // // this part is firing a new text everytime u press one of the two buttons on ur mouse
+  // this.input.on('pointerdown', function (pointer) {
+  //   if (pointer.rightButtonDown()) {
+  //     this.sys.dialogModal.setText(pickLine(), true);
+  //   } else {
+  //     this.sys.dialogModal.setText(pickLine(), true);
+  //   }
+  // }, this);
 }
-function update() {
-var pointer = this.input.activePointer();
-}
+// function update() {
+//   var pointer = this.input.activePointer();
+// }

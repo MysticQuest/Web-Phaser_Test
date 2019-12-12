@@ -1,3 +1,4 @@
+
 /* eslint-disable es5/no-block-scoping */
 /* eslint-disable array-bracket-spacing */
 /* eslint-disable es5/no-arrow-functions */
@@ -13,10 +14,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable indent */
 
-const greetArray = ["Hello, ", "Greetings, ", "Hey dawg, ", "Sup man, ", "I've been waiting in queue for hours and ", "Help me, ","Excuseeee me!","Is this line a mockery? "];
-const firstArray = ["my cat ", "my uncle ", "the neighbour ", "my ex-wife ", "my dog ", "my lawyer ", "a kid ","my autistic cousin ","a bird ","my sex slave "];
+const greetArray = ["Hello, ", "Greetings, ", "Hey dawg, ", "Sup man, ", "I've been waiting in queue for hours and ", "Help me, ", "Excuseeee me!", "Is this line a mockery? "];
+const firstArray = ["my cat ", "my uncle ", "the neighbour ", "my ex-wife ", "my dog ", "my lawyer ", "a kid ", "my autistic cousin ", "a bird ", "my sex slave "];
 const clueArray = ["is pressing charges against me.", "died today...", "stole my car!", "has been deported!", "is talking shit about me!"];
 
+const replyArray = ["Thanks for nothing asshole!", "Are you kidding me???", "A monkey would do a better job than you."];
 
 function pickLine() {
     const greet = greetArray[Math.floor(Math.random() * greetArray.length)];
@@ -26,4 +28,9 @@ function pickLine() {
     return string;
 }
 
-module.exports = pickLine;
+function pickReply() {
+    const reply = replyArray[Math.floor(Math.random() * replyArray.length)];
+    return reply;
+}
+
+module.exports = pickLine, pickReply;

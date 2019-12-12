@@ -66,8 +66,10 @@ DialogModalPlugin.prototype = {
         this.visible = true;
         // the current text in the window
         this.text;
+
         // the text that will be displayed in the window
         this.dialog;
+
         this.graphics;
         this.closeBtn;
 
@@ -117,6 +119,7 @@ DialogModalPlugin.prototype = {
     // Hide/Show the dialog window
     toggleWindow: function () {
         this.visible = !this.visible;
+        if (this.choiceText) this.choiceText.visible = this.visible;
         if (this.text) this.text.visible = this.visible;
         if (this.graphics) this.graphics.visible = this.visible;
         if (this.closeBtn) this.closeBtn.visible = this.visible;
@@ -164,6 +167,7 @@ DialogModalPlugin.prototype = {
             });
         }
     },
+
 
     // Slowly displays the text in the window to make it appear annimated
     _animateText: function () {
