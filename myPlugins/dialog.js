@@ -178,6 +178,8 @@ DialogModalPlugin.prototype = {
         }
     },
 
+
+
     // Creates the inner dialog window(where the text is displayed)
     _createInnerWindow: function (x, y, rectWidth, rectHeight) {
         this.graphics.fillStyle(this.windowColor, this.windowAlpha);

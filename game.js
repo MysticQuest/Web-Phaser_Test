@@ -59,13 +59,19 @@ function create() {
   this.sys.dialogModal.setText(pickLine(), true);
   this.input.mouse.disableContextMenu();
 
+  // a counter 
+  var counter = 666;
+  counterDisplay = this.add.text(630, 20, "Queue: " + counter, { font: '30px Arial', fill: '#ffff00' });
 
-  // Adds text in the scene
-  choiceA = this.add.text(100, 480, "- Have you tried turning it on and off?", { font: '16px Arial', fill: '#fff' });
-  choiceB = this.add.text(100, 510, "- Not my problem ", { font: '16px Arial', fill: '#fff' });
-  choiceC = this.add.text(100, 540, "- Next please...", { font: '16px Arial', fill: '#fff' });
+  // states
+  var talking = false;
 
-  // Enables input events with functions
+  // Adds dialog options in the scene
+  choiceA = this.add.text(50, 480, "- Have you tried turning it on and off?", { font: '16px Arial', fill: '#fff' });
+  choiceB = this.add.text(50, 510, "- Not my problem ", { font: '16px Arial', fill: '#fff' });
+  choiceC = this.add.text(50, 540, "- Next please...", { font: '16px Arial', fill: '#fff' });
+
+  // Adds input callback to each text object
   choiceA.setInteractive();
   choiceB.setInteractive();
   choiceC.setInteractive();
@@ -80,9 +86,13 @@ function create() {
 
   choiceC.on("pointerdown", function (event) {
     this.sys.dialogModal.setText(pickLine(), true);
+    counter--;
+    counterDisplay.setText("Queue: " + counter);
   }, this);
 
-
+  this.input.on("pointerdown", function (event) {
+    // Add a function for global click here if we ever need it
+  }, this);
 
   // // this part is firing a new text everytime u press one of the two buttons on ur mouse
   // this.input.on('pointerdown', function (pointer) {
@@ -94,5 +104,5 @@ function create() {
   // }, this);
 }
 // function update() {
-//   var pointer = this.input.activePointer();
+  // var pointer = this.input.activePointer();
 // }
